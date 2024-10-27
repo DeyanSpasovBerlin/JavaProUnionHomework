@@ -1,9 +1,14 @@
 package org.example.Homework13_24_10_2024.task3;
 
 public class PaymentCard {
+    private String name;
     private double balance;
-
+    public PaymentCard(){};
     public PaymentCard(double balance) {
+        this.balance = balance;
+    }
+    public PaymentCard(String name,double balance){
+        this.name = name;
         this.balance = balance;
     }
 
@@ -26,5 +31,13 @@ public class PaymentCard {
             System.out.println("Your balanc is not enought for this lunch!");
             return false;
         }
+    }
+
+    @Override
+    public String toString() {
+        return "PaymentCard{" +
+                "name='" + name + '\'' +
+                ", balance=" + balance +
+                '}';
     }
 }

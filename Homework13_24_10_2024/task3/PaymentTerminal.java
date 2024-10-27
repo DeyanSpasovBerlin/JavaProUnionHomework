@@ -114,10 +114,6 @@ public class PaymentTerminal {
         lm.add(affordableMeals);
         lm.add(heartyMeals);
         lm.add(octupusMeals);
-//        System.out.println("Today was sold next meals:");
-//        System.out.print("\taffordable meal costs 2.50 euros \thearty meal costs 4.30 euros \toctupus meal costs 8.1 " +
-//                "euros \n");
-//        System.out.print("                   \t                     "+lm);
         return lm;
     }
 

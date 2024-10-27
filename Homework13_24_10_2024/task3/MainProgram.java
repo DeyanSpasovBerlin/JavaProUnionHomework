@@ -1,6 +1,7 @@
 package org.example.Homework13_24_10_2024.task3;
 
 import java.util.LinkedList;
+import java.util.List;
 
 public class MainProgram {
 
@@ -8,7 +9,7 @@ public class MainProgram {
 
     public static void main(String[] args) {
 
-        PaymentCard petesCard = new PaymentCard(10);
+        PaymentCard petesCard = new PaymentCard("Pete",10);
 
         System.out.println("money " + petesCard.balance());
         boolean wasSuccessful = petesCard.takeMoney(8);
@@ -40,7 +41,7 @@ public class MainProgram {
          change = unicafeExactum.eatAffordably(10);
         System.out.println("remaining change: " + change);
 
-        PaymentCard annesCard = new PaymentCard(7);
+        PaymentCard annesCard = new PaymentCard("Anne",7);
 
          wasSuccessful = unicafeExactum.eatHeartily(annesCard);
         System.out.println("there was enough money: " + wasSuccessful);
@@ -72,10 +73,10 @@ public class MainProgram {
         System.out.println(unicafeExactum);
 
         System.out.println("**************");
-        PaymentCard jorgCard = new PaymentCard(25);
-        PaymentCard benCard = new PaymentCard(5);
-        PaymentCard adamoCard = new PaymentCard(9);
-        PaymentCard saraCard = new PaymentCard(60);
+        PaymentCard jorgCard = new PaymentCard("Jorg",25);
+        PaymentCard benCard = new PaymentCard("Ben",5);
+        PaymentCard adamoCard = new PaymentCard("Adamo",9);
+        PaymentCard saraCard = new PaymentCard("Sara",60);
         unicafeExactum.eatAffordably(5);
         unicafeExactum.eatAffordably(11);
         unicafeExactum.eatHeartily(benCard);
@@ -89,6 +90,24 @@ public class MainProgram {
         RemoveSmallSoldLunch rm = new RemoveSmallSoldLunch();
         rm.restrictListSoldLunch(removeShortesSoldLunch);
         rm.removeShortestSoldLunch(removeShortesSoldLunch);
+        System.out.println("**************");
+        List<PaymentCard> list = List.of(jorgCard,benCard,adamoCard,saraCard,annesCard,petesCard);
+        LinkedList<PaymentCard> studCardList = new LinkedList<>(list);
+        StatisticClass sc = new StatisticClass();
+        PaymentCard minBalance = sc.stat1(studCardList);
+        System.out.println("**************");
+        LinkedList<PaymentCard> reloadStudCardList = sc.loadMinBalanceCard(studCardList,minBalance);
+        System.out.println("**************");
+        double averageBalance = sc.averageBalanceCard(studCardList);
+        System.out.println("**************");
+        sc.removeNonAverageBalanceCard(studCardList,averageBalance);
 
+    }
+    public static LinkedList<PaymentCard> cardList(){
+
+
+        LinkedList<PaymentCard> studCardList = new LinkedList<>();
+
+        return null;
     }
 }
