@@ -103,11 +103,4 @@ public class MainProgram {
         sc.removeNonAverageBalanceCard(studCardList,averageBalance);
 
     }
-    public static LinkedList<PaymentCard> cardList(){
-
-
-        LinkedList<PaymentCard> studCardList = new LinkedList<>();
-
-        return null;
-    }
 }
