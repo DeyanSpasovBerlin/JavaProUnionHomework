@@ -14,14 +14,6 @@ public class Translator {
         return dictionary;
     }
 
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//        Translator that = (Translator) o;
-//        return Objects.equals(dictionary, that.dictionary);
-//    }
-
     @Override
     public int hashCode() {
         return Objects.hashCode(dictionary);
@@ -34,7 +26,6 @@ public class Translator {
                 '}';
     }
     public void start(){
-        //Scanner reader = new Scanner(System.in);
         Integer chois;
         do{
             System.out.println("\nChoose: \t1. New word                \t2.  Exit");
