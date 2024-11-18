@@ -8,7 +8,7 @@ import java.util.function.Supplier;
 public class Start {
     Scanner reader = new Scanner(System.in);
     Reservuar re = new Reservuar();
-//    Random rand = new Random();
+    RandomSort rs = new RandomSort();
     public  void startJoke(){
         do{
             System.out.print("\tDo you wont a joke?         \t Exit\n");
@@ -16,7 +16,7 @@ public class Start {
             String chois = reader.nextLine();
             if(chois.toUpperCase().equals("Y")){
                 Supplier<String> randomJoke =() ->{
-                    return re.getInputList().get(new Random().nextInt(re.getInputList().size()));
+                    return String.valueOf(rs.makeRandomList());
                 };
                 System.out.println(randomJoke.get());
             } else if (chois.toUpperCase().equals("E")) {
