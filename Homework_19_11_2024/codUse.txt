@@ -1,0 +1,86 @@
+**************************
+
+import java.util.Scanner;
+
+public class Homework17Main {
+    public static void main(String[] args) {
+        Homework17Zada4a1 zad1 = new Homework17Zada4a1();
+        Homework17Zada4a2 zad2 = new Homework17Zada4a2();
+        Homework17Zada4a3 zad3 = new Homework17Zada4a3();
+        Scanner reader = new Scanner(System.in);
+        Integer chois;
+        do{
+            System.out.println("\nInput: \t1.Zada4a 1; \t2.Zada4a2 \t3.Zada4a3 \t4.Exit\n");
+            chois = reader.nextInt();
+            if(chois.equals(1)){
+                zad1.printZad1();
+            } else if (chois.equals(2)) {
+                zad2.printZad2();
+            } else if (chois.equals(3)) {
+               zad3.printZad3();
+            } else if (chois.equals(4)) {
+                System.out.println("Goodbay");
+                break;
+            }else {
+                System.out.println("Input 1 or 2 or 3 or 4!");
+                continue;
+            }
+        }while (true);
+    }
+}
+
+****************************
+
+ do{
+            System.out.print("\tDo you wont a joke?         \t Exit\n");
+            System.out.print("\t        Y                    \t  E\n");
+            String chois = reader.nextLine().toUpperCase();
+           if(chois.toUpperCase().equals("Y")){
+                Supplier<String> randomJoke =() ->{
+                    return String.valueOf(rs.makeRandomList());
+                };
+                System.out.println(randomJoke.get());
+            } else if (chois.toUpperCase().equals("E")) {
+               System.out.println("GOOOOOODbyе!");
+                break;
+           }else {
+                System.out.println(" Only Y and E are allowed!");
+                continue;
+            }
+ }while (true);
+ ******************
+ Верно работещ код:
+
+ public class Start {
+     Scanner reader = new Scanner(System.in);
+     Reservuar re = new Reservuar();
+     RandomSort rs = new RandomSort();
+     public  void startJoke() {
+         Supplier<String> randomJoke = () -> {
+             return String.valueOf(rs.makeRandomList());
+         };
+         Boolean flag = true;
+         while (flag) {
+             System.out.print("\tDo you wont a joke?         \t Exit\n");
+             System.out.print("\t        Y                    \t  E\n");
+             String chois = reader.nextLine().toUpperCase();
+             switch (chois) {
+                 case "Y" -> System.out.println(randomJoke.get());
+                 case "E" -> {
+                     System.out.println("GOOOOOODbyе!");
+                     flag = false;
+                 }
+                 default -> System.out.println(" Only Y and E are allowed!");
+             }
+         }
+     }
+ }
+ -------------
+ public class MainTask1 {
+     public static void main(String[] args) {
+         Start start = new Start();
+         start.startJoke();
+     }
+ }
+ --------------
+ *********************
