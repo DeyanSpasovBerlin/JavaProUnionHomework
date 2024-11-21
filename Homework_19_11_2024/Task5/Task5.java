@@ -19,7 +19,15 @@ public class Task5 {
                 new Employee("Ella", "Leroy", 29, 31)
         );
 
+    public Task5() {};
 
+    public Task5(List<Employee> employees) {
+        this.employees = employees;
+    }
+
+    public List<Employee> getEmployees() {
+        return employees;
+    }
 
     public void task5() {
         System.out.println("Initial list of employees:");
@@ -64,7 +72,11 @@ public class Task5 {
         List<Employee> result = employees.stream().filter(e ->e.getName().substring(0,1).equals("J")).filter(
                 e -> e.getWorkingHoursInMonth() > 30).toList();
         System.out.println(result);
-
+        System.out.println("-----------------");
+        System.out.println("- Через 2 последовательных partitioningBy:");
+        Map<Boolean,List<Employee>>  resultDoublepartitioningBy = filterWorkHourEmployee.get(true).stream()
+                .collect(Collectors.partitioningBy(e -> e.getName().substring(0,1).equals("J")));
+        System.out.println(resultDoublepartitioningBy.get(true));
     }
 }
 
