@@ -84,7 +84,6 @@ public class Task1 {
                 "        for (int i = 0; i < 10_000; i++) {\n" +
                 "            sum += 0.1;\n" +
                 "        } = "+sum);
-      // Double sum1 = DoubleStream.of(0,10000).reduce(0.0,(acum, i) -> (Double) (acum + i*0.1));
         Integer[] data1 = new Integer[10000];
         IntStream.range(0, 10000).forEach(i -> data1[i] = i);
         List<Double> db = (Arrays.stream(data1).map(i -> 0.1)).toList();
@@ -93,9 +92,6 @@ public class Task1 {
                 "        List<Double> db = (Arrays.stream(data1).map(i -> 0.1)).toList();\n" +
                 "db.stream().reduce(0.0, (accumulator, data2) -> accumulator +data2)" +
                 " = "+db.stream().reduce(0.0, (accumulator, data2) -> accumulator +data2));
-        //******************
-//        Double sum1 = Double.valueOf(Arrays.stream(data1).reduce(0,(acum, i) -> (int) (acum + 0.1)));
-//        System.out.println("Double sum1 = DoubleStream.of(0,10000).reduce(0.0,(acum, i) -> (Double) (acum + i*0.1)); = "+sum1);
         System.out.println("*************");
         //********************************************************************************************************************************
         List<Integer> listTask1_f = new ArrayList<>();
