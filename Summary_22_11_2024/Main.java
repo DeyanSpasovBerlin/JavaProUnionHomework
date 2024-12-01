@@ -53,12 +53,17 @@ public class Main {
         Map<String,List<Employee> > departmentEmpl = employees.stream().collect(Collectors.groupingBy(Employee::getDepartment));
         System.out.println("<department / список сотрудников> = "+departmentEmpl);
 //        - <department / общая сумма рабочих часов>
-        Map<String, Integer> departmenEmplworkingHoursInMonth = employees.stream().collect(Collectors.
-                groupingBy(Employee::getDepartment, Collectors.mapping(
-                        Collectors.summingInt(e-> Employee::getWorkingHoursInMonth Integer::sum)) ));  //-> 1, Integer::sum //value -> value ? 1 : 0
-        System.out.println("<department / общая сумма рабочих часов> = "+departmenEmplworkingHoursInMonth);
+//        Map<String, Integer> departmenEmplworkingHoursInMonth = employees.stream().collect(Collectors.
+//                groupingBy(Employee::getDepartment, Collectors.mapping(
 
-    }
+                        //****************
+                        Map<String, Integer> collect6 = employees.stream()
+                                .collect(Collectors.groupingBy(Employee::getDepartment, Collectors.summingInt(Employee::getWorkingHoursInMonth)));
+        System.out.println(collect6);
+//                     //   Collectors.summingInt(e-> Employee::getWorkingHoursInMonth Integer::sum)) ));  //-> 1, Integer::sum //value -> value ? 1 : 0
+//        Syst//out.println("<department / общая сумма рабочих часов> = "+departmenEmplworkingHoursInMonth);
+
+    };
 
         static class Cat {
         private String name;

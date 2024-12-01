@@ -1,9 +1,7 @@
 package org.example.Homework_19_11_2024.Task1;
 
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class Task1 {
     private String[] initStr = getStringArr();

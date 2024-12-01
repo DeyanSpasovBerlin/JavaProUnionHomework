@@ -1,8 +1,6 @@
 package org.example.Homework_19_11_2024.Task3;
 
-import java.awt.*;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 public class Task3 {
     private  List<String> nameList = List.of("Tom","Nike","Emma","Mary","Tom","Jane","John","Ella");
