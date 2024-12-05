@@ -20,5 +20,7 @@ public class Task1 {
         Task2 task2 = new Task2();
         task2.call3Method();
 
+         Task3 task3 = new Task3();
+         task3.calldivisionBy0Exeption(5,0);
     }
 }
