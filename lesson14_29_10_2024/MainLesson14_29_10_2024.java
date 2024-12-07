@@ -16,7 +16,7 @@ public class MainLesson14_29_10_2024 {
         list.add("F");
 
         Work work = new Work();
-        work.searc(list,"H");
+        work.searc(list, "H");
 
     }
 }
