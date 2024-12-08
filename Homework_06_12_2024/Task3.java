@@ -23,6 +23,8 @@ public class Task3 {
             Boolean resLogin = null;
             Boolean resPass = null;
             Boolean resConfirmPass = null;
+            System.out.println("\tInput data:  \t login: " + login + "  \tpass: " + pass +
+                    "  \tconfirmPass: " + confirmPass);
             try {
                 String regexLogin = "[a-zA=Z]{3,20}";
                 Pattern patternLogin = Pattern.compile(regexLogin, Pattern.CASE_INSENSITIVE);
@@ -66,9 +68,10 @@ public class Task3 {
             }
 
             Boolean res = resLogin && resPass && resConfirmPass;
+            System.out.println("resLogin && resPass && resConfirmPass = "+res);
             System.out.println("\tInput data:  \t login: " + login + "  \tpass: " + pass +
                     "  \tconfirmPass: " + confirmPass + "  \tresult: " + res);
-            System.out.println("res = "+res);
+
             return res;
         }
 
@@ -76,6 +79,8 @@ public class Task3 {
         Boolean resLogin = null;
         Boolean resPass = null;
         Boolean resConfirmPass = null;
+        System.out.println("\tInput data:  \t login: " + login + "  \tpass: " + pass +
+                "  \tconfirmPass: " + confirmPass);
         try {
             String regexLogin = "[a-zA=Z]{3,20}";
             Pattern patternLogin = Pattern.compile(regexLogin, Pattern.CASE_INSENSITIVE);
@@ -106,9 +111,9 @@ public class Task3 {
             e.printStackTrace();
         }
         Boolean res = resLogin && resPass && resConfirmPass;
+        System.out.println("resLogin && resPass && resConfirmPass = "+res);
         System.out.println("\tInput data:  \t login: " + login + "  \tpass: " + pass +
                 "  \tconfirmPass: " + confirmPass + "  \tresult: " + res);
-        System.out.println("res = "+res);
         return res;
     }
 
