@@ -42,6 +42,19 @@ public class Main {
         task3.validateLoginPass("john","12345@","12345@");
         System.out.println("-----------------");
         task3.validateLoginPass("john1","12345","12345");
+        System.out.println("-----------------");
+        System.out.println("Общий блок catch (WrongLoginException | WrongPasswordException e) не позволяет детальное сообщение\n " +
+                "что имменно случилось. Разбиение на отдельных блоках\n" +
+                "tru-catch позволяет для каждого случая отдельное сообщение. ");
+        System.out.println("-----------------");
+        task3.validateLoginPassMultiCatch("john","1234a","1234a");
+        System.out.println("-----------------");
+        task3.validateLoginPassMultiCatch("john","12345","123456");
+        System.out.println("-----------------");
+        task3.validateLoginPassMultiCatch("john","12345@","12345@");
+        System.out.println("-----------------");
+        task3.validateLoginPassMultiCatch("john1","12345","12345");
+        System.out.println("-----------------");
 
     }
 }
