@@ -66,6 +66,8 @@ public class Task3 {
             }
 
             Boolean res = resLogin && resPass && resConfirmPass;
+            System.out.println("\tInput data:  \t login: " + login + "  \tpass: " + pass +
+                    "  \tconfirmPass: " + confirmPass + "  \tresult: " + res);
             System.out.println("res = "+res);
             return res;
         }
@@ -104,6 +106,8 @@ public class Task3 {
             e.printStackTrace();
         }
         Boolean res = resLogin && resPass && resConfirmPass;
+        System.out.println("\tInput data:  \t login: " + login + "  \tpass: " + pass +
+                "  \tconfirmPass: " + confirmPass + "  \tresult: " + res);
         System.out.println("res = "+res);
         return res;
     }
