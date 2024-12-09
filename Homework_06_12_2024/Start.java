@@ -18,18 +18,24 @@ public class Start {
                     task1.validateTelNum("123 4567");
                     task1.validateTelNum("1234567");
                     task1.validateTelNum("123-4567");
-                    task1.validateTelNum("023-4567");//0 in first position
-                    task1.validateTelNum("12334567");// 8 num
-                    task1.validateTelNum("123  4567");//2 space
-                    task1.validateTelNum("123_4567");//under score
+                    task1.validateTelNum("023-4567");System.out.print("\t0 in first position\n");;//0 in first position
+                    task1.validateTelNum("12334567");System.out.print("\t8 num\n");// 8 num
+                    task1.validateTelNum("123  4567");System.out.print("\t2 space\n");//2 space
+                    task1.validateTelNum("123_4567");System.out.print("\tunder score\n");//under score
                     System.out.println("-----------------");
                 }
                 case "2" -> {
                     task2.validateEmail("dac@abv.bg");
+                    task2.validateEmail("dfdfff_h-u.ac@abv.bg");
                     task2.validateEmail("pislpe@gmail.com");
-                    task2.validateEmail("pis@lpe@gmail.com");//2 @
-                    task2.validateEmail("pis@lpe@gm.ail.com");//2 ..
-                    task2.validateEmail("pis lpe@gmail.com");//space
+                    task2.validateEmail("pis@lpe@gmail.com"); System.out.print("\tTwo @\n");//2 @
+                    task2.validateEmail("pislpe@gm.ail.com");System.out.print("\tTwo .\n");//2 ..
+                    task2.validateEmail("0pislpe@gmail.com");System.out.print("\tFirst sign is num\n");//first sign is num
+                    task2.validateEmail("pislpe@gm ail.com");System.out.print("\tHas space\n");//space
+                    task2.validateEmail("pis lpe@gmail.com");System.out.print("\tHas space in first part\n");//space
+                    task2.validateEmail("pislpe@gmail.c om");System.out.print("\tHas space in third part\n");//space
+                    task2.validateEmail("pislpe@gmail.c-om");System.out.print("\tHas - in third  part\n");//space
+                    task2.validateEmail("pislpe@gmail.c.om");System.out.print("\tHas . in third  part\n");
                     System.out.println("-----------------");
                 }
                 case "3" -> {
