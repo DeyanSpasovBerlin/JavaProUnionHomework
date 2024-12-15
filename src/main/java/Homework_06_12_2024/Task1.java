@@ -1,4 +1,4 @@
-package org.example.Homework_06_12_2024;
+package Homework_06_12_2024;
 
 public class Task1 {
     public Boolean validateTelNum(String telNum){

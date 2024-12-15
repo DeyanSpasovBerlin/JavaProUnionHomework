@@ -1,4 +1,4 @@
-package org.example.Homework_06_12_2024;
+package Homework_06_12_2024;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

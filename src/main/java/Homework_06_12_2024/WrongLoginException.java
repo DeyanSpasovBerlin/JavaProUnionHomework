@@ -1,4 +1,4 @@
-package org.example.Homework_06_12_2024;
+package Homework_06_12_2024;
 
 public class WrongLoginException extends Exception{
     public WrongLoginException() {
