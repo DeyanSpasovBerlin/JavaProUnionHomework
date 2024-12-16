@@ -57,7 +57,9 @@ class CustomDynamicArrayTest {
         cda.add(2);
         cda.add(3);
         cda.add(4);
-        cda.add(5);
+        assertEquals(4,cda.getSize());
+        cda.addAt(3,33);
+        assertEquals(8,cda.getSize());
         assertThrows(RuntimeException.class,() -> cda.addAt(6,6));//Index is out of bounds
         cda.addAt(2,22);
         assertEquals(22,cda.get(2));
@@ -70,6 +72,7 @@ class CustomDynamicArrayTest {
         assertEquals(2,cda.getSize());
         cda.growSize();
         assertEquals(4,cda.getSize());
+
 
     }
 
