@@ -17,6 +17,8 @@ class Task3Test {
      public void validateLoginPass(){
         assertTrue(task3.validateLoginPass("dsgsAjhsksk","0dak1jli5i9","0dak1jli5i9"));
         assertFalse(task3.validateLoginPass("dsgs1Ajhsksk","0dak1jli5i9","0dak1jli5i9"));
+//       assertThrows(WrongLoginException.class,() ->
+//        task3.validateLoginPass("dsgs1Ajhsksk","0dak1jli5i9","0dak1jli5i9"));
        assertFalse(task3.validateLoginPass("dsgsAjhsksk","0da","0da"));
        assertFalse(task3.validateLoginPass("dsgsAjhsksk","0daj18od4","0daj19od4"));
        assertFalse(task3.validateLoginPass("dsgs1Ajhsksk","0dak1jl i5i9","0dak2jli5i9"));

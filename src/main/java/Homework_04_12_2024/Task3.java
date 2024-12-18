@@ -1,4 +1,4 @@
-package org.example.Homework_04_12_2024;
+package Homework_04_12_2024;
 
 import java.io.BufferedWriter;
 import java.io.File;
