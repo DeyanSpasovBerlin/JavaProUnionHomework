@@ -77,7 +77,7 @@ public class Start {
                     System.out.println("GOOOOOODbyе!");
                     flag = false;
                 }
-                default -> System.out.println(" Only Y and E are allowed!");
+                default -> System.out.println(" Only 1,2,3 and E are allowed!");
             }
         }
     }

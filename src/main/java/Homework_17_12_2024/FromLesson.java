@@ -1,32 +1,26 @@
-package Homework_13_12_2024;
+package Homework_17_12_2024;
 
-import java.util.ArrayList;
-import java.util.List;
-public class MyTread {
+public class FromLesson {
     public static void main(String[] args) {
         System.out.println(Runtime.getRuntime().availableProcessors());
 
         int maxNumber = 200_000;
         long start = System.currentTimeMillis();
-        List<Integer> primeNumber = computeSequentially(maxNumber);
+        int count = computeSequentially(maxNumber);
         long end = System.currentTimeMillis();
-        System.out.println("Total numbers of prime: " + primeNumber.get(0));
-        System.out.println("Last prime number is " + primeNumber.get(primeNumber.size() - 1));
-        System.out.println(primeNumber.get(primeNumber.size() - 2)+" , " + primeNumber.get(primeNumber.size() - 3)+" , " + primeNumber.get(primeNumber.size() - 4));
-
+        System.out.println("Total numbers of prime: " + count);
         System.out.println("Time elapsed, sequentially:" + (end - start));
 
         start = System.currentTimeMillis();
-        ArrayList<ArrayList<Integer>> result = computeParallel();
+        count = computeParallel();
         end = System.currentTimeMillis();
-        System.out.println(result.get(0) + " , " + result.get(1));
+        System.out.println("Total numbers of prime: " + count);
         System.out.println("Time elapsed, parallel:" + (end - start));
     }
 
-    private static ArrayList<ArrayList<Integer>> computeParallel() {
-        ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
-        Task runnable1 = new Task(2, 120_000);
-        Task runnable2 = new Task(120_000, 200_000);
+    private static int computeParallel() {
+        Task runnable1 = new Task(2, 150_000);
+        Task runnable2 = new Task(150_000, 200_000);
 
         Thread thread1 = new Thread(runnable1);
         Thread thread2 = new Thread(runnable2);
@@ -36,14 +30,11 @@ public class MyTread {
 
         try {
             thread1.join();
-            ArrayList<Integer> result1 = (ArrayList<Integer>) runnable1.getPrimeNumber();
+            int result1 = runnable1.getCount();
             thread2.join();
-            ArrayList<Integer> result2 = (ArrayList<Integer>) runnable2.getPrimeNumber();
-
-               result.add(result1);
-               result.add(result2);
-
-            return result;
+            int result2 = runnable2.getCount();
+            int count = result1 + result2;
+            return count;
         } catch (InterruptedException e) {
             throw new RuntimeException("Error");
         }
@@ -55,7 +46,6 @@ public class MyTread {
         int minNumber;
         int maxNumber;
         int count = 0;
-        List<Integer> primeNumber;
 
         public Task(int minNumber, int maxNumber) {
             this.minNumber = minNumber;
@@ -65,11 +55,9 @@ public class MyTread {
         public int getCount() {
             return count;
         }
-        public List<Integer> getPrimeNumber(){return primeNumber;}
 
         @Override
         public void run() {
-            List<Integer> primeNumber = new ArrayList<Integer>(List.of(0));
             for (int i = minNumber; i < maxNumber; i++) {
                 boolean isPrime = true;
 
@@ -81,15 +69,12 @@ public class MyTread {
                 }
 
                 if (isPrime)
-                    primeNumber.set(0,count);
                     count++;
-                    primeNumber.add(i);
             }
         }
     }
 
-    private static List<Integer> computeSequentially(int maxNumber) {
-        List<Integer> primeNumber = new ArrayList<Integer>(List.of(0));
+    private static int computeSequentially(int maxNumber) {
         int count = 0;
         for (int i = 2; i < maxNumber; i++) {
             boolean isPrime = true;
@@ -101,13 +86,9 @@ public class MyTread {
                 }
             }
 
-            if (isPrime) {
-                primeNumber.set(0,count);
+            if (isPrime)
                 count++;
-                primeNumber.add(i);
-            }
         }
-        return primeNumber;
+        return count;
     }
-
 }
