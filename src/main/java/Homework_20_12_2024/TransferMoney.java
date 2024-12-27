@@ -44,8 +44,8 @@ public class TransferMoney {
         t.start();
         try {
             t.join();
-            System.out.println(A);
-            System.out.println(B);
+            System.out.println(A+" at: "+LocalDateTime.now());
+            System.out.println(B+" at: "+LocalDateTime.now());
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
