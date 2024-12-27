@@ -21,7 +21,7 @@ public class BankAcount {
     public String toString() {
         return "BankAcount{" +
                 "balance=" + balance +
-                ", name='" + name + '\'' +
+                " €, name='" + name + '\'' +
                 '}';
     }
 }
