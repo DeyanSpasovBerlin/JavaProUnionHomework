@@ -16,7 +16,7 @@ public class TransferMoney {
     }
 
     public  void transferFromAtoB(BankAcount A,BankAcount B,int sum,int i){
-        new Thread(() ->{
+        Thread t = new Thread(() ->{
             synchronized (B){
                 if(sum<A.getBalance()) {
                     int balancABefor = A.getBalance();
@@ -39,8 +39,15 @@ public class TransferMoney {
                 }else {
                     System.out.println("In bancAcount " + A.name + " not enought mone for transfer sum: " + sum);
                 }
-
             }
-        }).start();
+        });
+        t.start();
+        try {
+            t.join();
+            System.out.println(A);
+            System.out.println(B);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

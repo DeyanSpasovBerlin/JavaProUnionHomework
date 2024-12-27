@@ -22,12 +22,5 @@ public class MainBankAcount {
              a = rand.nextInt(25);
             transfer.transferFromAtoB(acountOfRichord,acountOfJohn,a,i);
         }
-        try {
-            Thread.sleep(9000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        System.out.println(acountOfJohn);
-        System.out.println(acountOfRichord);
     }
 }
