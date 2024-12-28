@@ -9,7 +9,7 @@ public class MainBankAcount {
     public static void main(String[] args) {
         Random rand = new Random();
         int i = 0;
-
+        TransferRecords transferRecords = new TransferRecords();
         TransferMoney transfer = new TransferMoney();
         BankAcount acountOfJohn = new BankAcount("John",100);
         System.out.println(acountOfJohn);
@@ -18,9 +18,9 @@ public class MainBankAcount {
         System.out.println("-------------------------");
         while (i++ <5){
             int a = rand.nextInt(20);
-            transfer.transferFromAtoB(acountOfJohn,acountOfRichord,a,i);
-             a = rand.nextInt(25);
-            transfer.transferFromAtoB(acountOfRichord,acountOfJohn,a,i);
+            transfer.transferFromAtoB(acountOfJohn,acountOfRichord,a,i,transferRecords);
+            a = rand.nextInt(25);
+            transfer.transferFromAtoB(acountOfRichord,acountOfJohn,a,i,transferRecords);
         }
     }
 }
