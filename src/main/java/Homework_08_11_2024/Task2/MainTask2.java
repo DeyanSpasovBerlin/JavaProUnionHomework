@@ -1,4 +1,8 @@
-package org.example.Homework_08_11_2024.Task2;
+package Homework_08_11_2024.Task2;
+
+import Homework_08_11_2024.Task2.Dictionary;
+import Homework_08_11_2024.Task2.TextContein;
+import Homework_08_11_2024.Task2.GenerateStringList;
 
 import java.util.Arrays;
 import java.util.Collections;

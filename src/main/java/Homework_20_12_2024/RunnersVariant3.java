@@ -34,7 +34,7 @@ public class RunnersVariant3 {
                 e.printStackTrace();
             }
             Long timeBeforBridge = System.currentTimeMillis();
-            System.out.println("Befor bridge " + Thread.currentThread().getName() + " run: " + (timeBeforBridge - startTime));
+            System.out.println("Before bridge " + Thread.currentThread().getName() + " run: " + (timeBeforBridge - startTime));
             synchronized (brid){
                 System.out.println("The runner " + Thread.currentThread().getName() + " is on the bridge for 3 sec!");
                 try {

@@ -1,4 +1,4 @@
-package org.example.Homework_08_11_2024.Task2;
+package Homework_08_11_2024.Task2;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -60,14 +60,14 @@ public class Dictionary {
 
     }
     public void sortWithAscenComparatorClass(Map<String,Integer> map){
-        Map<String,Integer> sortCompClass = new TreeMap<>(new AscendigComparator(map));
+        Map<String,Integer> sortCompClass = new TreeMap<>(new Task2.AscendigComparator(map));
         sortCompClass.putAll(map);
         AtomicInteger i = new AtomicInteger(1);
         sortCompClass.forEach((word,ocuranceNum) -> System.out.println("\tword №:"+(i.getAndIncrement())+" ["+word+"] is written ["
                 +ocuranceNum+"] times."));
     }
     public void sortWithDescenComparatorClass(Map<String,Integer> map){
-        Map<String,Integer> sortDesCompClass = new TreeMap<>(new DescendingComparator(map));
+        Map<String,Integer> sortDesCompClass = new TreeMap<>(new Homework_08_11_2024.Task2.DescendingComparator(map));
         sortDesCompClass.putAll(map);
         AtomicInteger i = new AtomicInteger(1);
         sortDesCompClass.forEach((word,ocuranceNum) -> System.out.println("\tword №:"+(i.getAndIncrement())+" ["+word+"] is written ["

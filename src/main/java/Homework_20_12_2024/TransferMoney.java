@@ -30,12 +30,12 @@ public class TransferMoney {
                     B.setBalance(B.getBalance() + sum);
                     A.setBalance(A.getBalance()-sum);
                     System.out.println(A.name+" Transfer № " + i +": from "+A.name+ " to "+B.name+ " at " + LocalDateTime.now());
-                    System.out.println(("From BankAcount " + A.name + " transfer €" + sum +
-                            " to bankAcount " + B.name + " in time: " + LocalDateTime.now()));
-                    System.out.println("Balanc of acount " + A.name + " befor transfer was: " + balancABefor+" €");
-                    System.out.println("Balanc of acount " + A.name + " after transfer is: " + A.getBalance()+" €");
-                    System.out.println("Balanc of acount " + B.name + " befor transfer was: " + balancBBefor+" €");
-                    System.out.println("Balanc of acount " + B.name + " after transfer is: " + B.getBalance()+" €");
+                    System.out.println(("From BankAccount " + A.name + " transfer €" + sum +
+                            " to bankAccount " + B.name + " in time: " + LocalDateTime.now()));
+                    System.out.println("Balance of account " + A.name + " before transfer was: " + balancABefor+" €");
+                    System.out.println("Balance of account " + A.name + " after transfer is: " + A.getBalance()+" €");
+                    System.out.println("Balance of account " + B.name + " before transfer was: " + balancBBefor+" €");
+                    System.out.println("Balance of account " + B.name + " after transfer is: " + B.getBalance()+" €");
                     System.out.println("-------------------------");
                     try {
                         Thread.sleep(1000);
@@ -43,7 +43,7 @@ public class TransferMoney {
                         e.printStackTrace();
                     }
                 }else {
-                    System.out.println("In bancAcount " + A.name + " not enought mone for transfer sum: " + sum+" €");
+                    System.out.println("In bankAccount " + A.name + " not enough money for transfer sum: " + sum+" €");
                 }
             }
         });

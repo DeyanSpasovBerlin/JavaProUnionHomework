@@ -1,4 +1,4 @@
-package org.example.Homework_08_11_2024.Task2;
+package Homework_08_11_2024.Task2;
 
 public class GenerateStringList {
 

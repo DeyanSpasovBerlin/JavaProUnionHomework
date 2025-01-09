@@ -33,7 +33,7 @@ public class RunnerVariant1 implements Runnable{
             e.printStackTrace();
         }
         long beforBridge = System.currentTimeMillis();
-        System.out.println("Befor bridge " + Thread.currentThread().getName() + " run: " + (beforBridge - start));
+        System.out.println("Before bridge " + Thread.currentThread().getName() + " run: " + (beforBridge - start));
         synchronized (brid){
             System.out.println("The runner " + Thread.currentThread().getName() + " is on the bridge for 3 sec!");
             try {
