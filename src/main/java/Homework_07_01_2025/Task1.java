@@ -7,8 +7,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class Task1 {
     Scanner reader = new Scanner(System.in);
-    boolean shouldStop = false;
-    static AtomicInteger counter1 = new AtomicInteger(0);
+public static     boolean shouldStop = false;
+public    static AtomicInteger counter1 = new AtomicInteger(0);
     private int arrows = 10;
     static BlockingQueue<Integer> robinHoodQueue = new SynchronousQueue<>(true);
     static BlockingQueue<Integer> servanQueue = new SynchronousQueue<>(true);
@@ -21,8 +21,19 @@ public class Task1 {
                     if (idx != 0) {
                         System.out.println("The arrow is " + (arrows - idx + 1) + " right on the target!");
                         counter1.incrementAndGet();
+                        System.out.println("RobinHood stretches the bow with the new arrow 1 sec!");
+                        if(counter1.get()>20){
+                            System.out.println("--------------");
+                            System.out.println("Robin Hood shoots 20 and goes for a beer!");
+                            System.out.println("--------------");
+                            shouldStop = true;
+                            break;
+                        }
                     } else {
+                        System.out.println("--------------");
                         System.out.println("The arrows are over");
+                        System.out.println("--------------");
+                        System.out.println("So far Robin Hood has fired: "+counter1.get());
                         System.out.println("--------------");
                         System.out.println("Enter how many arrows Robin Hood ordered:");
                         System.out.println("--------------");
@@ -30,18 +41,21 @@ public class Task1 {
                             System.out.println("Carry a new quiver with " + arrows + " arrows!!");
                             servanQueue.put(arrows);
                     }
-                    System.out.println("RobinHood stretches the bow with the new arrow 1 sec!");
+//                    System.out.println("RobinHood stretches the bow with the new arrow 1 sec!");
                     Thread.sleep(1000);
                 }
-                System.out.println("So far Robin Hood has fired: "+counter1.get());
+//                System.out.println("--------------");
+//                System.out.println("So far Robin Hood has fired: "+counter1.get());
+//                System.out.println("--------------");
                 arrows = robinHoodQueue.take();
                 System.out.println("RobinHood take new deliveru from " + arrows + " arrows!");
-                if(counter1.get()>20){
-                    System.out.println("--------------");
-                    System.out.println("Robin Hood shoots 20 and goes for a beer!");
-                    System.out.println("--------------");
-                    shouldStop = true;
-                }
+//                if(counter1.get()>20){
+//                    System.out.println("--------------");
+//                    System.out.println("Robin Hood shoots 20 and goes for a beer!");
+//                    System.out.println("--------------");
+//                    shouldStop = true;
+//                    break;
+//                }
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -61,12 +75,14 @@ public class Task1 {
                  System.out.println(Thread.currentThread().getName() + " brings order to RobinHood for 2 sec.");
                  robinHoodQueue.put(arrows);
                  if(counter1.get()>20){
+//                 if (shouldStop){
                      System.out.println("--------------");
-                     System.out.println("The squire brought more than 20 arrows. He knows " +
-                             "that after 20 arrows Robin Hood will be drinking beer. The squire lay down to sleep.");
-                     System.out.println("--------------");
+                 System.out.println("The squire brought more than 20 arrows. He knows " +
+                         "that after 20 arrows Robin Hood will be drinking beer. The squire lay down to sleep.");
+                 System.out.println("--------------");
                      shouldStop = true;
-                 }
+                 break;
+             }
              } catch (InterruptedException e) {
                  e.printStackTrace();
              }
