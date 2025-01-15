@@ -23,29 +23,31 @@ public class TransferMoney {
 
     public void transferFromAtoB(BankAcount A, BankAcount B, int sum, int i, TransferRecords tr){
         Thread t = new Thread(() ->{
-            synchronized (B){
-                if(sum<A.getBalance()) {
-                    int balancABefor = A.getBalance();
-                    int balancBBefor = B.getBalance();
-                    B.setBalance(B.getBalance() + sum);
-                    A.setBalance(A.getBalance()-sum);
-                    System.out.println(A.name+" Transfer № " + i +": from "+A.name+ " to "+B.name+ " at " + LocalDateTime.now());
-                    System.out.println(("From BankAccount " + A.name + " transfer €" + sum +
-                            " to bankAccount " + B.name + " in time: " + LocalDateTime.now()));
-                    System.out.println("Balance of account " + A.name + " before transfer was: " + balancABefor+" €");
-                    System.out.println("Balance of account " + A.name + " after transfer is: " + A.getBalance()+" €");
-                    System.out.println("Balance of account " + B.name + " before transfer was: " + balancBBefor+" €");
-                    System.out.println("Balance of account " + B.name + " after transfer is: " + B.getBalance()+" €");
-                    System.out.println("-------------------------");
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
+//            synchronized (A) {
+                synchronized (B) {
+                    if (sum < A.getBalance()) {
+                        int balancABefor = A.getBalance();
+                        int balancBBefor = B.getBalance();
+                        B.setBalance(B.getBalance() + sum);
+                        A.setBalance(A.getBalance() - sum);
+                        System.out.println(A.name + " Transfer № " + i + ": from " + A.name + " to " + B.name + " at " + LocalDateTime.now());
+                        System.out.println(("From BankAccount " + A.name + " transfer €" + sum +
+                                " to bankAccount " + B.name + " in time: " + LocalDateTime.now()));
+                        System.out.println("Balance of account " + A.name + " before transfer was: " + balancABefor + " €");
+                        System.out.println("Balance of account " + A.name + " after transfer is: " + A.getBalance() + " €");
+                        System.out.println("Balance of account " + B.name + " before transfer was: " + balancBBefor + " €");
+                        System.out.println("Balance of account " + B.name + " after transfer is: " + B.getBalance() + " €");
+                        System.out.println("-------------------------");
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    } else {
+                        System.out.println("In bankAccount " + A.name + " not enough money for transfer sum: " + sum + " €");
                     }
-                }else {
-                    System.out.println("In bankAccount " + A.name + " not enough money for transfer sum: " + sum+" €");
                 }
-            }
+//            }
         });
         t.start();
         try {

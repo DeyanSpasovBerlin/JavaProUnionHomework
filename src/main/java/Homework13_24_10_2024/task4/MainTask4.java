@@ -6,7 +6,7 @@ public class MainTask4 {
     public static void main(String[] args) {
 
         HomeworkTask taskText = new HomeworkTask();
-        taskText.readFile("Task.txt");
+        taskText.readFile("Homework_2025_01_09/Task.txt");
 
         Task4 task = new Task4();
         task.getIndex(2);

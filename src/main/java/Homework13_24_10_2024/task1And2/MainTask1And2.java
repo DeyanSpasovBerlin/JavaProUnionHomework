@@ -6,7 +6,7 @@ public class MainTask1And2 {
     public static void main(String[] args) {
 
         HomeworkTask taskText = new HomeworkTask();
-        taskText.readFile(taskText.fileInfo("Task.txt"));
+        taskText.readFile(taskText.fileInfo("Homework_2025_01_09/Task.txt"));
 
         GenerateLinkedList genLin1 = new GenerateLinkedList();
         System.out.println("We have the next text: ");

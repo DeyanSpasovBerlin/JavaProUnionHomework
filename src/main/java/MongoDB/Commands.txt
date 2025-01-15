@@ -1,0 +1,102 @@
+show datebases
+show collections
+db.createcollection("students")
+db.collections.find()
+
+db.students.insertOne(
+  {"name":"Egor","surname":"Egorov","age":25})
+
+db.students.insertMany([{name: 'Oleg',surname: 'Olegov',age: 45,
+  course : {title: "Algo",length : 20,description : "Zer gutte course"}},
+{name: 'Ben', surname: 'Jons', age: 95,course : {title: "Sport",length : 20,
+description : "Zer gutte course"}}])
+
+  db.students.find({},{_id : 0,name:1,eys:1})
+  db.users.find({ $and:[{rate:{$gte:50}}, {age:{$gte:30}}] )
+    ************************
+    db.sales.insertMany( [{_id: 0, items: [
+             { item_id: 43, quantity: 2, price: 10, name: "pen" },
+             { item_id: 2, quantity: 1, price: 240, name: "briefcase" }
+          ]
+       },{ _id: 1,items: [
+             { item_id: 23, quantity: 3, price: 110, name: "notebook" },
+             { item_id: 103, quantity: 4, price: 5, name: "pen" },
+             { item_id: 38, quantity: 1, price: 300, name: "printer" }
+          ]
+       },{ _id: 2,items: [
+             { item_id: 4, quantity: 1, price: 23, name: "paper" }
+          ]}] )
+    *******************
+    db.sales.aggregate( [ {$project: {items: {$filter: {input: "$items",as: "item",
+    cond: { $gte: [ "$$item.price", 100 ] }}}}}] )
+    ********************
+    db.sales.aggregate( [{ $project: { items: {$filter: {input: "$items",as: "item",
+     cond: { $gte: [ "$$item.price", 100 ] }, limit: 1} }}}] )
+    *****************
+    function insertEmployee(_id,name,address){db.employee.insertMany([ {_id : _id,name: name,address : address},{
+    _id:_id, name:name, address:address}]);};
+    ***************************
+    db.workers.find().skip(2).limit(3)
+    *************
+    db.workers.find().sort({salary:1}).limit(3)
+    ************
+
+    2. Заполнить коллекцию workers 5 документами со свойствами id, firstname, lastname, age, position, salary, skills.
+     Используйте следующие данные:
+        1. Inga Petrova, 27, Barista, 1500, [’preparing drinks’, ‘cleaning equipment’]
+        2. Boris Orlov, 36, Server, 2400, [’taking orders’, ‘suggesting meals’, ‘taking payments’]
+        3. Ivan Demidov, 32, Chef, 3200, [’preparing food’, ‘baking bread’]
+        4. Marina Sidorova, 22, Hostess, 1700, [’greeting guests’, ‘seating guests’, ‘answering phone calls’]
+        5. Olga Ivanova, 43, Sommelier, 2500, [’curating a wine list’, ‘creating wine pairings’]
+        **********************
+         function insertEmployee(id,firstname,lastname,age,position,salary,skills){db.workers.insertOne([
+         {_id :id,firstname:firstname,lastname:lastname,age:age,position:position,salary:salary,skills:skills}])}
+         ****************
+          insertEmployee([{31,"Inga","Petrova",27,"Barista",1500,[{"preparing drinks"}, {"cleaning equipment"}]},
+             {32,"Boris","Orlov",36,"Server",2400,[{"taking orders"}, {"suggesting meals"}, {"taking payments"}]},
+              {33,"Ivan","Demidov",32,"Chef",3200,[{"preparing food"}, {"baking bread"}]},
+              {34,"Marina","Sidorova",22,"Hostess",1700,[{"greeting guests"}, {"seating guests"}, {"answering phone calls"}]},
+               {35,"Olga","Ivanova",43,"Sommelier",2500,[{"curating a wine list"}, {"creating wine pairings"}]}])
+               ***********
+                        function insertEmployee(firstname,lastname,age,position,salary,skills){db.workers.insertMany([
+                        {firstname:firstname,lastname:lastname,age:age,position:position,salary:salary,skills:[]},
+                        {firstname:firstname,lastname:lastname,age:age,position:position,salary:salary,skills:[]},
+                        {firstname:firstname,lastname:lastname,age:age,position:position,salary:salary,skills:[]},
+                        {firstname:firstname,lastname:lastname,age:age,position:position,salary:salary,skills:[]},
+                        {firstname:firstname,lastname:lastname,age:age,position:position,salary:salary,skills:[]}])}
+                        --------------------
+                               insertEmployee([{"Inga","Petrova",27,"Barista",1500,[{"preparing drinks", "cleaning equipment"}]},
+                                  {"Boris","Orlov",36,"Server",2400,[{"taking orders", "suggesting meals", "taking payments"}]},
+                                   {"Ivan","Demidov",32,"Chef",3200,[{"preparing food", "baking bread"}]},
+                                   {"Marina","Sidorova",22,"Hostess",1700,[{"greeting guests", "seating guests", "answering phone calls"}]},
+                                    {"Olga","Ivanova",43,"Sommelier",2500,[{"curating a wine list", "creating wine pairings"}]}])
+                                    **********************************
+
+        db.workers.updateOne({name:"Egor},{$set:{age:55}})
+        db.students.updateOne({name : 'Egor'},{$set : {age : 55}})
+        $inc
+        db.students.updateOne({name : 'Egor'},{$inc : {rate : 1}})
+        $unset
+        db.students.updateOne({name : 'Egor'},{$unset : {rate : 1}})
+        **********************
+        db.workers.updateOne({_id : 3},{$inc : {salary : 400}})
+        db.workers.updateOne({_id : {$in:[3,4]}},{$inc : {salary : 1800}})
+        db.workers.updateMany({_id : {$in:[3,5]}},{$unset : {age : 1}})
+
+        $push
+        db.students.updateOne({name:'Egor'},{$push:{languages:'English'}})
+        db.students.updateOne({name: 'Egor'}, {$push : {languages : {$each : ["German", "Italian"]}}})
+        $pull;
+        $pullAll
+        db.students.updateOne({name : 'Egor'},{$pull : {languages : "Spanish"}})
+        db.students.updateOne({name : 'Egor'},{$pullAll : {languages : ["German","English"]}})
+        attending group meetings
+        db.workers.updateMany({$and:[{age:{$gte:28}},{age:{$lt:36}}]},{$set : {rate : 66}})
+        // working with CRM-system, preparing for a concret - > Boris, Marina
+        db.workers.updateMany({firstname : {$in:['Boris','Marina']}},{$push : {skills : {$each : ["working with CRM-system", "preparing for a concret"]}}})
+        db.workers.updateMany({firstname : {$in:['Boris','Marina']}},{$pull : {skills : "preparing for a concret"}})
+        db.workers.updateMany({firstname : {$in:['Boris','Marina']}},{$push : {skills : "preparing for a concert"}})
+        db.workers.updateMany({firstname : {$in:['Boris','Marina']}},{$pull : {skills : "working with CRM-system"}})
+        $addToSet
+        db.workers.updateMany({firstname : {$in :['Boris','Marina']}}, {$push :{skills : {$each :['working with CRM-system','preparing for a concert']}}})
+        db.workers.updateMany({},{$set : {gender : "Not defined"}})

@@ -1,0 +1,7 @@
+db.getCollection('user').find({"userName":"Jack"})
+db.users.find({})
+db.users.find({ age: { $gt: 25 } })
+db.users.find({ $or: [{ age: { $gt: 30 } }, { gender: "female" }] })
+db.orders.find({ items: { $in: ["apple", "orange"] } })
+db.products.find({ name: { $regex: "cake", $options: "i" } })
+db.workers.updateMany({$and:[{age:{$gte:28}},{age:{$lt:36}}]},{$set : {rate : 66}})
