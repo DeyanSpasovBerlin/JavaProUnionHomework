@@ -66,7 +66,7 @@ public class MainDynamicArray {
         public void run() {
             while (!shuldStop) {
                 System.out.println("Queue size: " + queue.size());
-                String taken = queue.get("Exit");
+                String taken =queue.take();
                 if(taken.equals("Exit")){
                     System.out.println("Consumer stop work by command Exit!");
                     shuldStop = true;
