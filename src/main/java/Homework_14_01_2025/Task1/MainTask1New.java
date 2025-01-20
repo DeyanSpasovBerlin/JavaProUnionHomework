@@ -20,9 +20,10 @@ public class MainTask1New {
             return "Haus № " + j + " in complex № " + i + " is ready. It is bildet from " + Thread.currentThread().getName();
         };
 
-        while (countComplex < 4) {
+
 
             try (ExecutorService singleBrigade = Executors.newSingleThreadExecutor()) {
+                while (countComplex < 4) {
                 while (countHause < 11) {
                     Future<String> future = singleBrigade.submit(bildHaus);
                     try {

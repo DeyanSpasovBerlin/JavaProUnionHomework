@@ -14,6 +14,7 @@ public class MainMapTask {
         findSumEqualValue(array1,value);
         findSumEqualValue(array2,value);
         findSumEqualValue(array3,value);
+        System.out.println("----------------");
         System.out.println("Decision with two pointers:");
         int[] array11 = {3, 4,  6,7, 11, 23, 45};
         int[] array22 = {2 , 7 , 11, 15};
@@ -21,11 +22,14 @@ public class MainMapTask {
         twoPointers(array11,value);
         twoPointers(array22,value);
         twoPointers(array33,value);
-
+        System.out.println("----------------");
+        System.out.println("noDuble");
 
         int[] array4 = {0, 0, 1, 1, 1, 2 , 2, 3, 3, 4};
         int[] res = noDuble(array4);
         System.out.println(Arrays.toString(res));
+        System.out.println("----------------");
+
 
 
     }
