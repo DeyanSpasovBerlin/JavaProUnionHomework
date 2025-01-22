@@ -5,14 +5,16 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 import java.lang.reflect.Field;
+import java.util.Arrays;
 
-@AllArgsConstructor
-@NoArgsConstructor
+
 public class Student {
    private String name;
    private String surname;
    private int groupNumber;
    private boolean isOnline;
+
+    public Student() {}
 
     public Student(String name, String surname, int groupNumber, boolean isOnline) {
         this.name = name;
@@ -22,29 +24,41 @@ public class Student {
 
     }
 
+
+
     @StudentInfo(name = "John",surname = "Smith",groupNumber = 13,isOnline = true)
-    String student1;
+    String student;
 
+    @StudentInfo(name = "Tom", surname = "Smith", groupNumber = 1101, isOnline = true)
+    String student2;
 
-
-    public Student(String student1) {
-        this.student1 = student1;
+    @StudentInfo(name = "Mary", surname = "Jennings", groupNumber = 1102, isOnline = false)
+    String student3;
+    
+    public Student(String student) {
+        this.student = student;
     }
 
 
-    public String getStudent1() {
-        return student1;
+    public String getStudent() {
+        return student;
     }
 
     static class Injector {
+
         public static void inject(Object instance) {
             Field[] fields = instance.getClass().getDeclaredFields();
             for (Field field : fields) {
+                System.out.println("field: "+field);
                 if (field.isAnnotationPresent(StudentInfo.class)) {
                     StudentInfo annotation = field.getAnnotation(StudentInfo.class);
+                    System.out.println("annotation: "+annotation);
                     field.setAccessible(true); // should work on private fields
                     try {
                         field.set(instance, annotation.name());
+                        field.set(instance, annotation.surname());
+//                        field.set(instance, annotation.groupNumber());
+//                        field.set(instance, annotation.isOnline());
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -56,7 +70,10 @@ public class Student {
     @Override
     public String toString() {
         return "Student{" +
-                "student1='" + student1 + '\'' +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", groupNumber=" + groupNumber +
+                ", isOnline=" + isOnline +
                 '}';
     }
 
