@@ -72,7 +72,7 @@ description : "Zer gutte course"}}])
                                     {"Olga","Ivanova",43,"Sommelier",2500,[{"curating a wine list", "creating wine pairings"}]}])
                                     **********************************
 
-        db.workers.updateOne({name:"Egor},{$set:{age:55}})
+        db.workers.updateOne({name:"Egor"},{$set:{age:55}})
         db.students.updateOne({name : 'Egor'},{$set : {age : 55}})
         $inc
         db.students.updateOne({name : 'Egor'},{$inc : {rate : 1}})
@@ -100,3 +100,11 @@ description : "Zer gutte course"}}])
         $addToSet
         db.workers.updateMany({firstname : {$in :['Boris','Marina']}}, {$push :{skills : {$each :['working with CRM-system','preparing for a concert']}}})
         db.workers.updateMany({},{$set : {gender : "Not defined"}})
+
+
+        db.students.updateOne({},{$inc : {tate : 1}})
+        db.students.updateMany({_id : {$in:[4,5]}},{$set : {branch : "FE"}})
+        db.students.updateMany({_id :{$in :[4,5]}}, {$set : {branch : "FE"}})
+        db.workers.updateMany({_id : {$in:[1]}},{$unset : {rate : 1}})
+        db.students.updateOne({_id: 1},{$unset : {rate : 1}})
+        db.students.updateMany({_id : {$in : [4,5]}},{$push : {skills : 'javascript'}})
